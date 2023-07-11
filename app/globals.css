@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    -webkit-font-smothing: antialised;
+    text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+:root {
+  height: 100%;
+  background-color: black;
+  color-scheme: dark;
+}

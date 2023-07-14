@@ -1,10 +1,9 @@
 'use client'
 
-import { Carousel } from 'flowbite-react'
 import type { FlowbiteCarouselTheme } from 'flowbite-react'
-import React from 'react'
-import { Games } from '../interfaces'
-import { useThemeContext } from '../context'
+import { Carousel } from 'flowbite-react'
+import { useCarouselCurrentGame } from '../hooks/useCarousel'
+import { Games } from '../types'
 
 const customTheme: FlowbiteCarouselTheme = {
   root: {
@@ -40,13 +39,13 @@ type CarouselProps = {
 }
 
 export function DefaultCarousel({ games }: CarouselProps) {
-  const context = useThemeContext()
+  const { currentGame, setCurrentGame } = useCarouselCurrentGame()
 
   return (
     <>
       <Carousel
         theme={customTheme}
-        onSlideChange={(slideIdx) => context.setCurrentGame(slideIdx)}
+        onSlideChange={(slideIdx) => setCurrentGame(slideIdx)}
         slide={false}
         indicators={false}
       >
@@ -56,7 +55,7 @@ export function DefaultCarousel({ games }: CarouselProps) {
               key={game.id}
               className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white"
             >
-              {game.name} {context.currentGame + 1}/{games.length}
+              {game.name} {currentGame + 1}/{games.length}
             </div>
           )
         })}

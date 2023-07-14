@@ -1,8 +1,6 @@
-'use client'
-
-import DefaultCarousel from '@/components/DefaultCarousel'
+import { DefaultCarousel } from '../components/DefaultCarousel'
+import { HomeTitle } from '../components/HomeTitle'
 import { Games } from '../types'
-import { useThemeContext } from '../context'
 
 const items: Games[] = [
   { id: '1', name: 'Guess the Bundle', description: 'Descrição jogo 1' },
@@ -11,17 +9,11 @@ const items: Games[] = [
 ]
 
 export default function Home() {
-  const context = useThemeContext()
-
   return (
     <>
-      <main className="absolute z-10 grid min-h-screen min-w-full grid-cols-5">
+      <main className="absolute z-10 grid grid-cols-5">
         <section className="relative col-start-1 col-end-3 flex flex-col justify-center">
-          <div className="relative flex flex-col justify-between p-8 text-gray-50">
-            <h2>{items[context.currentGame].name}</h2>
-            <hr />
-            <p>{items[context.currentGame].description}</p>
-          </div>
+          <HomeTitle items={items}/>
         </section>
 
         <section className="col-start-3 col-end-6 pb-10 pt-24">
